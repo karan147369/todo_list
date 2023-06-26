@@ -11,7 +11,34 @@ const deleteTask = async (id) => {
   );
   return response;
 };
-const updateTask = async (id) => {};
-const addTask = async () => {};
+const updateTask = async ({ id, title, body, userId }) => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PUT",
+    body: JSON.stringify({
+      id: id,
+      title: title,
+      body: body,
+      userId: userId,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return response.json();
+};
+const addTask = async ({ title, body, userId }) => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify({
+      title: title,
+      body: body,
+      userId: userId,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return response.json();
+};
 export default fetchEntireList;
 export { deleteTask, updateTask, addTask };

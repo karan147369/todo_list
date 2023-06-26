@@ -1,0 +1,30 @@
+#form-container {
+  position: fixed;
+  height: 40vh;
+  width: 30vw;
+  left: 35vw;
+  z-index: 1;
+  background-color: rgba(10, 63, 46, 0.7);
+}
+form {
+  margin-left: 20%;
+  margin-top: 5%;
+}
+#heading {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  font-size: large;
+}
+
+#userId,
+#title,
+#body {
+  width: 300px;
+  text-align: center;
+  /* font-weight: bolder; */
+  color: black;
+  font-size: large;
+}

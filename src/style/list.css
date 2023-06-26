@@ -7,7 +7,6 @@
   display: grid;
   grid-template-columns: 5vw 5vw 17.5vw 17.5vw 17.5vw 17.5vw;
   grid-row-gap: 10px;
-  /* border: 1px solid black; */
   margin-top: 0;
 }
 #container > div:nth-child(8n + 1),
@@ -58,3 +57,9 @@
   background-color: white;
   color: red;
 }
+/* #page-counter {
+  margin-left: 1%;
+  min-width: 200px;
+  border: 1px solid red;
+  text-align: center;
+} */
