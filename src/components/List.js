@@ -12,7 +12,8 @@ const List = () => {
   const [newTask, setNewTask] = useState();
   const taskFunction = useRef();
   const updateID = useRef(0);
-
+  const [pageCounter, setPageCounter] = useState(false);
+  const [disableDelete, setDisableDelete] = useState(false);
   useEffect(() => {
     let arr = [];
     arr = [newTask, ...pageData];
@@ -65,7 +66,7 @@ const List = () => {
     if (arr.length > 0) {
       setPageData(arr);
     }
-
+    setPageCounter(false);
     chageButtonSytle(e);
   };
   const prevPage = (e) => {
@@ -80,16 +81,18 @@ const List = () => {
     if (arr.length > 0) {
       setPageData(arr);
     }
-
+    setPageCounter(true);
     chageButtonSytle(e);
   };
   const calldeleteTask = async (e) => {
+    setDisableDelete(true);
     const response = await deleteTask(e.target.id);
     let arr = [];
     arr = pageData.filter((element) => {
       return element.id !== parseInt(e.target.id.split(":")[1]);
     });
     setPageData(arr);
+    setDisableDelete(false);
   };
   const callUpdateTask = async (e) => {
     const bool = showTaskForm;
@@ -108,11 +111,11 @@ const List = () => {
       <div id="wrapper">
         <div id="header">
           <button onClick={(e) => prevPage(e)} class="button" id="button-1">
-            prevPage
+            prevPage {pageCounter ? `${pageCount.current}/10` : null}
           </button>
-          <span id="page-counter">{`${pageCount.current}/10`}</span>
+          {/* <span id="page-counter">{`&nbsp;${pageCount.current}/10`}</span> */}
           <button onClick={(e) => nextPage(e)} class="button" id="button-2">
-            nextPage
+            nextPage {pageCounter ? null : `${pageCount.current}/10`}
           </button>
           <button onClick={(e) => callAddTask(e)} class="button" id="button-3">
             Add Task
@@ -137,6 +140,7 @@ const List = () => {
                   <button
                     className="btn btn-danger"
                     id={`delete:${element.id}`}
+                    disabled={disableDelete}
                     onClick={(e) => calldeleteTask(e)}
                   >
                     Delete
