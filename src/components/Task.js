@@ -62,17 +62,6 @@ const Task = (props) => {
                 ></input>
               </td>
             </tr>
-            {/* <tr>
-              <td>
-                <input
-                  type="text"
-                  name="body"
-                  onChange={(e) => getValues(e)}
-                  id="body"
-                  placeholder="Body"
-                ></input>
-              </td>
-            </tr> */}
             <input
               type="submit"
               id="submit-title"
